@@ -1,4 +1,5 @@
 import { useEffect, useSyncExternalStore } from "react";
+
 import type { Language } from "@/domain/models/portfolio";
 
 const LANGUAGE_STORAGE_KEY = "portfolio-language";
@@ -23,11 +24,15 @@ function subscribeToLanguageChanges(onStoreChange: () => void) {
   };
 }
 
+function getServerLanguage(): Language {
+  return "en";
+}
+
 export function useLanguage() {
-  const language = useSyncExternalStore(
+  const language: Language = useSyncExternalStore(
     subscribeToLanguageChanges,
     getStoredLanguage,
-    () => "en",
+    getServerLanguage,
   );
 
   const setLanguage = (nextLanguage: Language) => {
