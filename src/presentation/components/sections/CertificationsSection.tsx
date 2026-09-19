@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
@@ -46,10 +47,12 @@ export function CertificationsSection({ language }: Props) {
                             <div className="relative flex h-64 items-center justify-center overflow-hidden bg-[var(--surface-soft)] p-7">
                                 <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(var(--foreground)_1px,transparent_1px),linear-gradient(90deg,var(--foreground)_1px,transparent_1px)] [background-size:28px_28px]" />
 
-                                <img
+                                <Image
                                     src={certification.image}
                                     alt={`${certification.name} certification`}
-                                    className="relative h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                                    fill
+                                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 420px, calc(100vw - 2.5rem)"
+                                    className="object-contain p-7 transition-transform duration-500 group-hover:scale-105"
                                 />
                             </div>
 

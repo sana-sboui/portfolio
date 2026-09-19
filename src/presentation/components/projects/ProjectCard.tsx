@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUpRight, ExternalLink, Play, Images } from "lucide-react";
 import type { Language, Project } from "@/domain/models/portfolio";
 import { copy } from "@/infrastructure/content/i18n";
@@ -25,10 +26,12 @@ export function ProjectCard({ project, language, onOpen }: Props) {
         aria-label={`${t.viewProject} — ${project.name}`}
       >
         <div className="relative aspect-[16/9] overflow-hidden bg-[var(--surface-soft)]">
-          <img
+          <Image
             src={project.coverImage}
             alt=""
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
 
           <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />

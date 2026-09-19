@@ -1,8 +1,10 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
+const THEME_STORAGE_KEY = "portfolio-theme";
+const THEME_CHANGE_EVENT = "portfolio-theme-change";
 
 interface ThemeContextValue {
   theme: Theme;
@@ -11,17 +13,39 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+function isTheme(value: string | null): value is Theme {
+  return value === "light" || value === "dark";
+}
 
-  useEffect(() => {
-    const savedTheme = window.localStorage.getItem("portfolio-theme") as Theme | null;
-    if (savedTheme === "light" || savedTheme === "dark") setTheme(savedTheme);
-  }, []);
+function getStoredTheme(): Theme {
+  const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+  return isTheme(savedTheme) ? savedTheme : "light";
+}
+
+function subscribeToThemeChanges(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  };
+}
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const theme = useSyncExternalStore(
+    subscribeToThemeChanges,
+    getStoredTheme,
+    () => "light",
+  );
+
+  const setTheme = (nextTheme: Theme) => {
+    window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+  };
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
 
   const value = useMemo(() => ({ theme, setTheme }), [theme]);

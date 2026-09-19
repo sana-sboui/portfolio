@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, FileText, Play, X } from "lucide-react";
 import type { Language, Project } from "@/domain/models/portfolio";
@@ -12,14 +13,23 @@ interface Props {
 }
 
 export function ProjectModal({ project, language, onClose }: Props) {
+    if (!project) return null;
+
+    return (
+        <ProjectModalContent
+            key={project.name}
+            project={project}
+            language={language}
+            onClose={onClose}
+        />
+    );
+}
+
+function ProjectModalContent({ project, language, onClose }: Props & { project: Project }) {
     const t = copy[language];
     const [currentScreenshot, setCurrentScreenshot] = useState(0);
 
     useEffect(() => {
-        if (!project) return;
-
-        setCurrentScreenshot(0);
-
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
                 onClose();
@@ -33,9 +43,7 @@ export function ProjectModal({ project, language, onClose }: Props) {
             document.removeEventListener("keydown", handleKeyDown);
             document.body.style.overflow = "";
         };
-    }, [project, onClose]);
-
-    if (!project) return null;
+    }, [onClose]);
 
     const screenshots = project.screenshots ?? [];
     const hasVideo = Boolean(project.videoUrl);
@@ -115,11 +123,13 @@ export function ProjectModal({ project, language, onClose }: Props) {
                             </div>
                         ) : hasScreenshots ? (
                             <div className="relative overflow-hidden rounded-2xl bg-[var(--surface-soft)]">
-                                <div className="aspect-video">
-                                    <img
+                                <div className="relative aspect-video">
+                                    <Image
                                         src={screenshots[currentScreenshot]}
                                         alt={`${project.name} ${t.screenshotLabel} ${currentScreenshot + 1}`}
-                                        className="h-full w-full object-contain"
+                                        fill
+                                        sizes="(min-width: 1024px) 896px, calc(100vw - 4rem)"
+                                        className="object-contain"
                                     />
                                 </div>
 
