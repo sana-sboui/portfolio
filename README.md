@@ -1,86 +1,226 @@
 # Sana Sboui — Portfolio
 
-A personal portfolio site built with Next.js and TypeScript, following a Clean Architecture–inspired folder structure, with full bilingual support (English/French) and light/dark theming.
+A modern, bilingual personal portfolio built with **Next.js** and **TypeScript**.
 
-**Live site:** //to add 
+The project follows a **Clean Architecture–inspired structure**, separating content, application logic, domain models, and presentation components. It is also designed to be reused as a starting point for developers who want to build their own portfolio.
 
----
+**Live site:** //
 
 ## Features
 
-- **Bilingual (EN/FR)** 
-- **Light/dark theme**
-- **Responsive**
-- **Typed content model** 
-- **CI/CD** — GitHub Actions pipeline: lint + type-check + build on every push, automatic preview deploys from `dev`, automatic production deploys from `main`
+- **Bilingual interface** — English and French
+- **Light / dark theme**
+- **Responsive design** — desktop, tablet and mobile
+- **Project media** — images, screenshots and video demonstrations
+- **Project details modal**
+- **CI/CD with GitHub Actions**
+- **Vercel deployment**
 
----
+## Tech Stack
 
-## Tech stack
-
-| Layer | Choice |
+| Technology | Purpose |
 |---|---|
-| Framework | Next.js (App Router) |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| Hosting | Vercel |
-| CI/CD | GitHub Actions |
+| [Next.js](https://nextjs.org/) | React framework and application structure |
+| [TypeScript](https://www.typescriptlang.org/) | Static typing |
+| [Tailwind CSS](https://tailwindcss.com/) | Styling and responsive layout |
+| [GitHub Actions](https://github.com/features/actions) | CI/CD |
+| [Vercel](https://vercel.com/) | Hosting and deployment |
 
----
+## Project Structure
 
-## Project structure
+The project follows a **Clean Architecture–inspired structure**. It keeps responsibilities separated so that content, domain models, application logic and UI components do not become tightly coupled.
 
-The codebase is organized in loose layers, inspired by Clean Architecture, so content, logic and presentation don't bleed into each other:
+```text
+src/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+│
+├── domain/
+│   └── models/
+│       └── portfolio.ts
+│
+├── application/
+│   └── hooks/
+│       └── useLanguage.ts
+│
+├── infrastructure/
+│   └── content/
+│       ├── portfolio.ts
+│       ├── i18n.ts
+│       └── site.ts
+│
+└── presentation/
+    └── components/
+        ├── layout/
+        │   ├── Header.tsx
+        │   ├── Footer.tsx
+        │   └── SectionHeading.tsx
+        │
+        ├── projects/
+        │   ├── ProjectCard.tsx
+        │   └── ProjectModal.tsx
+        │
+        ├── sections/
+        │   ├── HeroSection.tsx
+        │   ├── AboutSection.tsx
+        │   ├── ProjectsSection.tsx
+        │   ├── ExperienceSection.tsx
+        │   ├── CertificationsSection.tsx
+        │   └── ContactSection.tsx
+        │
+        └── theme/
+            └── ThemeProvider.tsx
 
+public/
+└── projects/
+│   ├── sabilouna/
+│   ├── instalab/
+│   ├── jobnest/
+│   ├── unityhr/
+│   ├── edusmart/
+│   ├── medflow/
+│   └── hms/
+└── og-image.png
+
+.github/
+└── workflows/
+    └── ci-cd.yml
+````
+
+### Layer responsibilities
+
+#### `domain/`
+
+Contains the core TypeScript models used by the application, such as:
+
+* `Project`
+* `Experience`
+* `Certification`
+* `Language`
+
+This keeps the portfolio data structure explicit and type-safe.
+
+#### `application/`
+
+Contains application-level logic such as language state and persistence.
+
+#### `infrastructure/`
+
+Contains the portfolio content and configuration:
+
+```text
+portfolio.ts → projects, experience and certifications
+i18n.ts      → interface translations
+site.ts      → name, email, GitHub and LinkedIn
 ```
-app/
-  layout.tsx              → root layout, metadata, Open Graph tags
-  page.tsx                → assembles the page from content + components
-  globals.css             → design tokens (colors, spacing) and global styles
 
-domain/
-  models/portfolio.ts      → TypeScript types (Project, Experience, Certification, Language)
+This is the main area to edit when adapting the template.
 
-infrastructure/
-  content/
-    portfolio.ts            → the actual data: projects, experience, certifications
-    i18n.ts                 → all UI copy, keyed by language
-    site.ts                 → contact links (email, LinkedIn, GitHub)
+#### `presentation/`
 
-application/
-  hooks/useLanguage.ts       → language state + persistence
+Contains React components responsible for rendering the interface.
 
-presentation/
-  components/
-    layout/Header.tsx, SectionHeading.tsx
-    theme/ThemeProvider.tsx   → theme context
-    projects/ProjectCard.tsx, ProjectModal.tsx
+#### `app/`
 
-.github/workflows/
-  ci-cd.yml                 → lint/type-check/build on every branch, deploy preview from dev, deploy production from main
+Contains the Next.js application entry points, global styles and metadata.
+
+# Getting Started
+
+## Prerequisites
+
+Make sure you have:
+
+* Node.js 20 or later
+* npm
+* Git
+
+Check your installed versions:
+
+```bash
+node --version
+npm --version
+git --version
 ```
 
----
+## Installation
 
-## Running it locally
+Clone the repository:
 
 ```bash
 git clone https://github.com/sana-sboui/portfolio.git
+```
+
+Move into the project:
+
+```bash
 cd portfolio
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
----
+## Available Commands
 
-## Using this as a template for your own portfolio
+Start the development server:
 
-You don't need to touch most of the app to make this yours — almost everything lives in `infrastructure/content/`. Here's the order to go through:
+```bash
+npm run dev
+```
 
-### 1. Your info and contact links
-Edit `infrastructure/content/site.ts`:
+Create a production build:
+
+```bash
+npm run build
+```
+
+Start the production server:
+
+```bash
+npm run start
+```
+
+Run ESLint:
+
+```bash
+npm run lint
+```
+
+Run TypeScript type-checking:
+
+```bash
+npx tsc --noEmit
+```
+
+# Using This as a Portfolio Template
+
+The project is designed so that most customization can be done without modifying the core components.
+
+If you want to use this project for your own portfolio, start with the following files.
+
+
+## 1. Update Your Personal Information
+
+Edit:
+
+```text
+src/infrastructure/content/site.ts
+```
+
+For example:
+
 ```ts
 export const site = {
   name: "Your Name",
@@ -90,62 +230,366 @@ export const site = {
 };
 ```
 
-### 2. Your experience, projects and certifications
-Edit `infrastructure/content/portfolio.ts`. Each entry is typed (see `domain/models/portfolio.ts`), so TypeScript will tell you if you're missing a field. Every text field is a `{ en: "...", fr: "..." }` object — if you only need one language, just keep both keys with the same value, or simplify the `Language` type and `Record<Language, string>` fields down to a single string throughout (more editing, but doable in an afternoon if bilingual isn't something you need).
+This information is used throughout the portfolio.
 
-Project images referenced by `coverImage` and `videoUrl`/`screenshots` should go in `public/projects/<project-name>/`.
+## 2. Add Your Projects, Experience and Certifications
 
-### 3. All visible text (headings, button labels, nav)
-Edit `infrastructure/content/i18n.ts`. This is the single place every piece of UI copy lives — search for the English string you want to change, update both the `en` and `fr` entries.
+Edit:
 
-### 4. Colors and branding
-Edit the CSS custom properties at the top of `app/globals.css`:
+```text
+src/infrastructure/content/portfolio.ts
+```
+
+Each entry is strongly typed using the models defined in:
+
+```text
+src/domain/models/portfolio.ts
+```
+
+### Example project
+
+```ts
+{
+  name: "My Project",
+  category: {
+    en: "Web Application",
+    fr: "Application Web",
+  },
+  description: {
+    en: "A short description of the project.",
+    fr: "Une courte description du projet.",
+  },
+  technologies: [
+    "Next.js",
+    "TypeScript",
+    "PostgreSQL",
+  ],
+  coverImage: "/projects/my-project/cover.png",
+}
+```
+
+---
+
+## 3. Add Project Media
+
+Project media belongs inside:
+
+```text
+public/projects/
+```
+
+For example:
+
+```text
+public/
+└── projects/
+    └── my-project/
+        ├── cover.png
+        ├── screenshot-1.png
+        ├── screenshot-2.png
+        └── demo.mp4
+```
+
+Reference the files from `portfolio.ts`:
+
+```ts
+{
+  name: "My Project",
+  coverImage: "/projects/my-project/cover.png",
+  screenshots: [
+    "/projects/my-project/screenshot-1.png",
+    "/projects/my-project/screenshot-2.png",
+  ],
+  videoUrl: "/projects/my-project/demo.mp4",
+}
+```
+
+Supported project resources include:
+
+* Cover images
+* Screenshots
+* Videos
+* Live demos
+* Source repositories
+* Additional resources
+
+## 4. Customize the Interface Text
+
+Edit:
+
+```text
+src/infrastructure/content/i18n.ts
+```
+
+This file contains the interface text for both supported languages.
+
+For example:
+
+```ts
+navProjects: {
+  en: "Projects",
+  fr: "Projets",
+}
+```
+
+This keeps UI copy centralized instead of spreading translations throughout components.
+
+## 5. Customize the Theme
+
+The main visual design tokens are defined in:
+
+```text
+src/app/globals.css
+```
+
+For example:
+
 ```css
 :root {
-  --primary: #3457d5;   /* your accent color, light mode */
+  --primary: #3457d5;
   --background: #f6f7fb;
-  ...
+  --surface: #ffffff;
 }
+
 [data-theme="dark"] {
-  --primary: #7d98ff;   /* your accent color, dark mode */
-  ...
+  --primary: #7d98ff;
+  --background: #0f1117;
+  --surface: #171a22;
 }
 ```
-Everything else in the app references these variables, so changing them here re-themes the whole site.
 
-### 5. Site metadata and social preview
-Edit `app/layout.tsx` — update `title`, `description`, `metadataBase` (your real deployed URL), and add a 1200×630 preview image at `public/og-image.png` so link previews on LinkedIn/Slack/etc. look right.
+The components reference these variables instead of hardcoding colors throughout the application.
 
-### 6. Your own domain and name in the header/footer
-`presentation/components/layout/Header.tsx` and the footer in `app/page.tsx` currently hardcode "Sana Sboui" as a wordmark — swap that for `site.name` or your own text.
+Changing the variables allows you to re-theme the portfolio from a centralized location.
 
----
+## 6. Update Metadata and Social Sharing
 
-## Deployment
+Edit:
 
-This repo deploys via GitHub Actions + Vercel (see `.github/workflows/ci-cd.yml`), not Vercel's built-in Git integration. Branch model:
-
-- `feature-*` branches → CI only (lint, type-check, build)
-- `dev` → CI, then deploys to a **preview** URL
-- `main` → CI, then deploys to **production**
-
-To set this up for your own fork:
-1. Create a project on Vercel (`vercel login` → `vercel link` from the project folder)
-2. Add three GitHub repo secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` (the last two come from `.vercel/project.json` after linking)
-3. Make sure Vercel's own Git integration is **disconnected** for the project (Settings → Git), since the Actions workflow is what deploys — leaving both connected causes duplicate deployments
-
----
-
-## License
-
-_Add a license here if you want others to reuse this freely — MIT is the common choice for portfolio templates:_
-
-```
-MIT License — feel free to fork and adapt this for your own portfolio.
+```text
+src/app/layout.tsx
 ```
 
----
+Update:
 
-## Credits
+* Page title
+* Description
+* `metadataBase`
+* Open Graph metadata
 
-Built by [Sana Sboui](https://github.com/sana-sboui). If you use this as a base for your own portfolio, a link back or a star is appreciated but never required.
+You can add your own social preview image at:
+
+```text
+public/og-image.png
+```
+
+A recommended Open Graph image size is:
+
+```text
+1200 × 630
+```
+
+This image can be used when your portfolio link is shared on platforms such as LinkedIn or Slack.
+
+## 7. Customize the Header and Footer
+
+The header is located at:
+
+```text
+src/presentation/components/layout/Header.tsx
+```
+
+You can modify:
+
+* Navigation links
+* Header layout
+* Theme button
+
+The footer is located at:
+
+```text
+src/presentation/components/layout/Footer.tsx
+```
+
+# Bilingual Content
+
+The portfolio currently supports:
+
+* English
+* French
+
+Language-specific content follows this structure:
+
+```ts
+{
+  en: "...",
+  fr: "..."
+}
+```
+
+The selected language is persisted locally, so refreshing the page does not reset the user's choice.
+
+If you do not need bilingual support, you can simplify the project by:
+
+1. Removing the language switcher.
+2. Replacing `Record<Language, string>` fields with `string`.
+3. Removing the language state and translation objects.
+
+The language logic is isolated so this change does not require rewriting the entire UI.
+
+# CI/CD
+
+The project uses **GitHub Actions + Vercel** for deployment.
+
+The workflow is defined in:
+
+```text
+.github/workflows/ci-cd.yml
+```
+
+The branch strategy is:
+
+```text
+feature/*
+    │
+    │ Pull Request
+    ▼
+  dev
+    │
+    │ Pull Request
+    ▼
+  main
+```
+
+### Feature branches
+
+Feature branches run the CI checks:
+
+```text
+Lint
+Type-check
+Build
+```
+
+### `dev`
+
+When changes are merged into `dev`, the workflow:
+
+1. Runs the CI checks.
+2. Builds the application.
+3. Deploys a Vercel preview.
+
+### `main`
+
+When changes are merged into `main`, the workflow:
+
+1. Runs the CI checks.
+2. Builds the application.
+3. Deploys the application to Vercel production.
+
+This provides a simple development → preview → production workflow.
+
+# Deploying Your Own Copy
+
+If you fork this repository and want to use the same deployment workflow:
+
+## 1. Create a Vercel project
+
+Install the Vercel CLI:
+
+```bash
+npm install -g vercel
+```
+
+Log in:
+
+```bash
+vercel login
+```
+
+From the project directory:
+
+```bash
+vercel link
+```
+
+Follow the prompts to connect the project to Vercel.
+
+## 2. Create a Vercel token
+
+Create a Vercel access token and add it to your GitHub repository as an Actions secret:
+
+```text
+VERCEL_TOKEN
+```
+
+In GitHub:
+
+```text
+Repository
+→ Settings
+→ Secrets and variables
+→ Actions
+→ New repository secret
+```
+
+The workflow accesses the token through:
+
+```yaml
+${{ secrets.VERCEL_TOKEN }}
+```
+
+## 3. Configure your branches
+
+Create:
+
+```text
+main
+dev
+```
+
+Then use feature branches for development:
+
+```text
+feature/my-new-section
+feature/projects-update
+feature/header-redesign
+```
+
+## 4. Connect the repository to Vercel
+
+Make sure your Vercel project is correctly linked before running the deployment workflow.
+
+The GitHub Actions workflow is responsible for deployment, so avoid configuring a second deployment workflow for the same branches unless you intentionally want both systems.
+
+# Contributing
+
+This project is primarily a personal portfolio, but you're welcome to fork it and adapt it for your own use.
+
+If you find a bug or have an improvement that could benefit the template, feel free to open an issue or pull request.
+
+# 📄 License
+
+This project is available under the **MIT License**.
+
+You are free to:
+
+* Use the template
+* Modify it
+* Create your own portfolio from it
+* Use it as a starting point for another project
+
+See the `LICENSE` file for the complete license text.
+
+# Author
+
+**Sana Sboui**
+
+Software Engineering Graduate
+Tunisia
+
+* GitHub: [https://github.com/sana-sboui](https://github.com/sana-sboui)
+* LinkedIn: [https://linkedin.com/in/sana-sboui-38776b217](https://linkedin.com/in/sana-sboui-38776b217)
+* Email: [sbouisana02@gmail.com](mailto:sbouisana02@gmail.com)
+
+If you use this project as the foundation for your own portfolio, a link back to the repository or a star is appreciated, but never required.

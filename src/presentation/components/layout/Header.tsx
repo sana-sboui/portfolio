@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { Language } from "@/domain/models/portfolio";
 import { copy } from "@/infrastructure/content/i18n";
 import { useTheme } from "../theme/ThemeProvider";
+import { site } from "@/infrastructure/content/site";
 
 interface Props {
   language: Language;
@@ -32,7 +33,7 @@ export function Header({ language, onLanguageChange }: Props) {
             href="#top"
             className="h-full items-center justify-center md:flex text-base font-bold tracking-tight transition-colors hover:text-[var(--primary)]"
           >
-            Sana Sboui
+            {site.name}
           </a>
         </div>
 

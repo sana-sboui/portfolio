@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/presentation/components/theme/ThemeProvider";
+import { site } from "@/infrastructure/content/site";
 
 //const siteUrl = "https://sanasboui.dev";
-const title = "Sana Sboui — Software Engineer";
+const title = `${site.name} — Software Engineer`;
 const description =
-  "Portfolio of Sana Sboui, software engineer focused on full-stack development, backend architecture and accessible web platforms.";
+  `Portfolio of ${site.name}, software engineer focused on full-stack development, backend architecture and accessible web platforms.`;
 
 export const metadata: Metadata = {
   // metadataBase: new URL(siteUrl),
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     title,
     description,
     //url: siteUrl,
-    siteName: "Sana Sboui",
+    siteName: `${site.name}`,
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: title }],
     locale: "en_US",
     type: "website",
