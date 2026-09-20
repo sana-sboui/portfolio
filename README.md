@@ -637,7 +637,7 @@ This project is primarily a personal portfolio, but you're welcome to fork it an
 
 If you find a bug or have an improvement that could benefit the template, feel free to open an issue or pull request.
 
-# 📄 License
+# License
 
 This project is available under the **MIT License**.
 
