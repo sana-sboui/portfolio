@@ -513,17 +513,72 @@ From the project directory:
 vercel link
 ```
 
-Follow the prompts to connect the project to Vercel.
+Follow the prompts to connect the project to Vercel and it should create a .vercel/ directory containing the project configuration.
 
-## 2. Create a Vercel token
+After linking, the Vercel project information can be found in:
 
-Create a Vercel access token and add it to your GitHub repository as an Actions secret:
+```bash
+.vercel/project.json
+```
+
+This file contains the values needed to configure the GitHub Actions deployment:
+
+* `orgId` → `VERCEL_ORG_ID`
+* `projectId` → `VERCEL_PROJECT_ID`
+
+The .vercel/ directory should not be committed to the repository (Already added in the .gitignore).
+
+## 2. Configure GitHub Actions secrets
+
+The deployment workflow requires three GitHub Actions secrets:
+
+```text
+VERCEL_TOKEN
+VERCEL_ORG_ID
+VERCEL_PROJECT_ID
+```
+
+#### `VERCEL_TOKEN`
+
+Create a Vercel access token from your Vercel account and add it as:
 
 ```text
 VERCEL_TOKEN
 ```
 
-In GitHub:
+#### `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID`
+
+After running:
+
+```bash
+vercel link
+```
+
+open:
+
+```text
+.vercel/project.json
+```
+
+You will find values similar to:
+
+```json
+{
+  "orgId": "your-org-id",
+  "projectId": "your-project-id"
+}
+```
+
+Add them to GitHub as:
+
+```text
+VERCEL_ORG_ID
+VERCEL_PROJECT_ID
+```
+
+### Add the secrets to GitHub
+
+Go to:
 
 ```text
 Repository
@@ -533,11 +588,15 @@ Repository
 → New repository secret
 ```
 
-The workflow accesses the token through:
+Add all three:
 
-```yaml
-${{ secrets.VERCEL_TOKEN }}
-```
+| GitHub Secret       | Source                               |
+| ------------------- | ------------------------------------ |
+| `VERCEL_TOKEN`      | Vercel access token                  |
+| `VERCEL_ORG_ID`     | `.vercel/project.json` → `orgId`     |
+| `VERCEL_PROJECT_ID` | `.vercel/project.json` → `projectId` |
+
+These values are accessed by the GitHub Actions workflow through the `secrets` context.
 
 ## 3. Configure your branches
 
@@ -556,11 +615,21 @@ feature/projects-update
 feature/header-redesign
 ```
 
-## 4. Connect the repository to Vercel
+## 4. Configure Vercel Git integration
 
 Make sure your Vercel project is correctly linked before running the deployment workflow.
 
-The GitHub Actions workflow is responsible for deployment, so avoid configuring a second deployment workflow for the same branches unless you intentionally want both systems.
+Because this project uses GitHub Actions to deploy through the Vercel CLI, the Vercel project's Git integration should be disconnected:
+
+```text
+Vercel Dashboard
+→ Project
+→ Settings
+→ Git
+→ Disconnect
+````
+
+This prevents Vercel's automatic Git deployment and the GitHub Actions workflow from deploying the same changes twice.
 
 # Contributing
 
