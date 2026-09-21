@@ -3,19 +3,19 @@ import "./globals.css";
 import { ThemeProvider } from "@/presentation/components/theme/ThemeProvider";
 import { site } from "@/infrastructure/content/site";
 
-//const siteUrl = "https://sanasboui.dev";
+const
 const title = `${site.name} — Software Engineer`;
 const description =
   `Portfolio of ${site.name}, software engineer focused on full-stack development, backend architecture and accessible web platforms.`;
 
 export const metadata: Metadata = {
-  // metadataBase: new URL(siteUrl),
+  metadataBase: new URL(site.url),
   title,
   description,
   openGraph: {
     title,
     description,
-    //url: siteUrl,
+    url: site.url,
     siteName: `${site.name}`,
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: title }],
     locale: "en_US",
