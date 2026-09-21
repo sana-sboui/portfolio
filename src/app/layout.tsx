@@ -3,7 +3,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/presentation/components/theme/ThemeProvider";
 import { site } from "@/infrastructure/content/site";
 
-const
 const title = `${site.name} — Software Engineer`;
 const description =
   `Portfolio of ${site.name}, software engineer focused on full-stack development, backend architecture and accessible web platforms.`;
