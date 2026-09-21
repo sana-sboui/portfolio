@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/presentation/components/theme/ThemeProvider";
 import { site } from "@/infrastructure/content/site";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const title = `${site.name} — Software Engineer`;
 const description =
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
