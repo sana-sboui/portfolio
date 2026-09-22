@@ -4,7 +4,7 @@ export interface Experience {
   company: string;
   role: Record<Language, string>;
   period: Record<Language, string>;
-  project: string;
+  project: Record<Language, string>;
   description: Record<Language, string>;
   technologies: string[];
   highlights: Record<Language, string[]>;

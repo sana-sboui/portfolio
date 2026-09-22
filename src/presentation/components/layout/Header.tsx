@@ -31,9 +31,32 @@ export function Header({ language, onLanguageChange }: Props) {
         <div className="flex items-center">
           <a
             href="#top"
-            className="h-full items-center justify-center md:flex text-base font-bold tracking-tight transition-colors hover:text-[var(--primary)]"
+            className="group flex items-center gap-2.5 transition-opacity duration-200 hover:opacity-90"
+            aria-label={site.name}
           >
-            {site.name}
+            <img
+              src={theme === "light" ? "/logo-light.png" : "/logo-dark.png"}
+              alt=""
+              className="h-12 w-12 object-contain"
+            />
+
+            <span
+              className="
+                hidden
+                bg-[var(--primary)]
+                bg-clip-text
+                font-serif
+                text-xl
+                font-bold
+                italic
+                tracking-[-0.03em]
+                text-transparent
+                drop-shadow-[0_1px_2px_rgba(36,69,216,0.15)]
+                sm:inline
+              "
+            >
+              {site.name}
+            </span>
           </a>
         </div>
 
