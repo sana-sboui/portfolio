@@ -4,7 +4,7 @@ A modern, bilingual personal portfolio built with **Next.js** and **TypeScript**
 
 The project follows a **Clean Architecture–inspired structure**, separating content, application logic, domain models, and presentation components. It is also designed to be reused as a starting point for developers who want to build their own portfolio.
 
-**Live site:** //
+**Live site:** https://www.sana-sboui.me
 
 ## Features
 
