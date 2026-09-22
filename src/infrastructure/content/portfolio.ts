@@ -5,7 +5,10 @@ export const experiences: Experience[] = [
     company: "Persista Technology",
     role: { en: "Software Engineering Intern", fr: "Stagiaire en ingénierie logicielle" },
     period: { en: "Feb 2026 — Jun 2026", fr: "Fév. 2026 — Juin 2026" },
-    project: "Sabilouna — Accessible administrative services platform",
+    project: {
+      en: "Sabilouna — Accessible administrative services platform",
+      fr: "Sabilouna — Plateforme de services administratifs accessibles",
+    },
     description: {
       en: "Built a full-stack platform connecting people with disabilities, ministries and associations, with accessible multilingual interfaces, secure authentication and dedicated AI services.",
       fr: "Développement d'une plateforme full-stack reliant les personnes en situation de handicap, les ministères et les associations, avec interfaces multilingues accessibles, authentification sécurisée et services IA dédiés."
@@ -31,8 +34,11 @@ export const experiences: Experience[] = [
   {
     company: "PlaySoft",
     role: { en: "Software Engineering Intern", fr: "Stagiaire en ingénierie logicielle" },
-    period: { en: "Jun 2025 — Jul 2025", fr: "Juin 2025 — Juil. 2025" },
-    project: "InstaLab — Educational learning platform",
+    period: { en: "Jun 2025 — Aug 2025", fr: "Juin 2025 — Août 2025" },
+    project: {
+      en: "InstaLab — Educational learning platform",
+      fr: "InstaLab — Plateforme éducative d'apprentissage",
+    },
     description: {
       en: "Developed quiz creation workflows, reusable Next.js components, trainer onboarding and transactional email features for an educational platform.",
       fr: "Développement de workflows de création de quiz, de composants Next.js réutilisables, du parcours Devenir formateur et de fonctionnalités d'e-mails transactionnels."
@@ -56,8 +62,11 @@ export const experiences: Experience[] = [
   {
     company: "Deepshift",
     role: { en: "Frontend Development Intern", fr: "Stagiaire en développement frontend" },
-    period: { en: "Jun 2025 — Jul 2025", fr: "Juin 2025 — Juil. 2025" },
-    project: "Medical platform — Frontend interfaces",
+    period: { en: "Jun 2025 — Aug 2025", fr: "Juin 2025 — Août 2025" },
+    project: {
+      en: "Medical platform — Frontend interfaces",
+      fr: "Plateforme médicale — Interfaces frontend",
+    },
     description: {
       en: "Developed responsive Next.js interfaces from design specifications and worked with the product team to improve UI consistency and usability.",
       fr: "Développement d'interfaces responsives en Next.js à partir des spécifications de design et collaboration avec l'équipe produit sur l'ergonomie et la cohérence de l'interface."
@@ -74,7 +83,10 @@ export const experiences: Experience[] = [
     company: "IT Grow",
     role: { en: "Artificial Intelligence Intern", fr: "Stagiaire en intelligence artificielle" },
     period: { en: "Jun 2024 — Sep 2024", fr: "Juin 2024 — Sept. 2024" },
-    project: "Arif — AI-assisted educational question generation",
+    project: {
+      en: "Arif — AI-assisted educational question generation",
+      fr: "Arif — Génération de questions pédagogiques assistée par IA",
+    },
     description: {
       en: "Engineered a pipeline transforming curriculum content into standardized assessment JSON using the Gemini API, with confidence-based validation before persistence.",
       fr: "Développé un pipeline transformant le contenu pédagogique en données d'évaluation JSON standardisées avec l'API Gemini, avec validation basée sur des scores de confiance avant persistance."
@@ -95,7 +107,10 @@ export const experiences: Experience[] = [
     company: "Premiere Consulting",
     role: { en: "AI Intern", fr: "Stagiaire en intelligence artificielle" },
     period: { en: "Jul 2023 — Aug 2023", fr: "Juil. 2023 — Août 2023" },
-    project: "Work accident prediction — Machine learning",
+    project: {
+      en: "Work accident prediction — Machine learning",
+      fr: "Prédiction des accidents du travail — Machine learning",
+    },
     description: {
       en: "Developed a machine learning model using historical workplace accident data, including data preprocessing, feature analysis and model evaluation.",
       fr: "Développement d'un modèle de machine learning à partir de données historiques d'accidents du travail, avec prétraitement, analyse des facteurs de risque et évaluation du modèle."
@@ -110,7 +125,10 @@ export const experiences: Experience[] = [
     company: "CNI",
     role: { en: "Software Engineering Intern", fr: "Stagiaire en ingénierie logicielle" },
     period: { en: "Jul 2022 — Aug 2022", fr: "Juil. 2022 — Août 2022" },
-    project: "Web CRUD application",
+    project: {
+      en: "Web CRUD application",
+      fr: "Application web CRUD",
+    },
     description: {
       en: "Developed a web CRUD application in native PHP for managing data within the National Computer Center.",
       fr: "Développement d'une application web CRUD en PHP natif pour la gestion de données au sein du Centre National Informatique."
@@ -200,6 +218,7 @@ export const projects: Project[] = [
     coverImage: "/projects/unityhr/cover.png",
     videoUrl: "/projects/unityhr/demo.mp4",
     demoUrl: "",
+    sourceUrl: "https://github.com/DaadouchaSalma/RHSystem.git",
   },
   {
     name: "EduSmart",
@@ -213,6 +232,7 @@ export const projects: Project[] = [
     coverImage: "/projects/edusmart/cover.png",
     videoUrl: "/projects/edusmart/demo.mp4",
     demoUrl: "",
+    sourceUrl: "https://github.com/sana-sboui/eduSmart.git",
   },
   {
     name: "SmartCare",
@@ -225,6 +245,7 @@ export const projects: Project[] = [
     featured: false,
     coverImage: "/projects/hms/cover.png",
     videoUrl: "/projects/hms/demo.mp4",
+    sourceUrl: "https://github.com/DaadouchaSalma/HMS.git",
   },
 ];
 
