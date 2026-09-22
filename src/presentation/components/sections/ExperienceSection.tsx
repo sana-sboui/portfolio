@@ -47,7 +47,7 @@ export function ExperienceSection({ language }: Props) {
                                 </div>
 
                                 <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/40">
-                                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                                    <div className="relative pr-20">
                                         <div>
                                             <h3 className="text-lg font-bold">
                                                 {experience.company}
@@ -59,14 +59,14 @@ export function ExperienceSection({ language }: Props) {
                                         </div>
 
                                         {experience.recent && (
-                                            <span className="w-fit rounded-full border border-[var(--border)] px-3 py-1 text-xs font-semibold text-[var(--muted)]">
+                                            <span className="absolute right-0 top-0 w-fit rounded-full border border-[var(--border)] px-3 py-1 text-xs font-semibold text-[var(--muted)]">
                                                 {t.recentBadge}
                                             </span>
                                         )}
                                     </div>
 
                                     <p className="mt-4 text-sm font-semibold">
-                                        {experience.project}
+                                        {experience.project[language]}
                                     </p>
 
                                     <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--muted)]">
