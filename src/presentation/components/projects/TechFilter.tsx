@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronDown, Search, SlidersHorizontal, X } from "lucide-react";
 
 interface Props {
@@ -31,6 +31,11 @@ export function TechFilter({
     const containerRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
+    const closeFilter = useCallback(() => {
+        setOpen(false);
+        setQuery("");
+    }, []);
+
     const filtered = useMemo(
         () =>
             technologies.filter((tech) =>
@@ -44,11 +49,11 @@ export function TechFilter({
 
         function handleClickOutside(event: MouseEvent) {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-                setOpen(false);
+                closeFilter();
             }
         }
         function handleEscape(event: KeyboardEvent) {
-            if (event.key === "Escape") setOpen(false);
+            if (event.key === "Escape") closeFilter();
         }
 
         document.addEventListener("mousedown", handleClickOutside);
@@ -59,18 +64,21 @@ export function TechFilter({
             document.removeEventListener("mousedown", handleClickOutside);
             document.removeEventListener("keydown", handleEscape);
         };
-    }, [open]);
-
-    useEffect(() => {
-        if (!open) setQuery("");
-    }, [open]);
+    }, [closeFilter, open]);
 
     return (
         <div className="mt-8">
             <div ref={containerRef} className="relative inline-flex">
                 <button
                     type="button"
-                    onClick={() => setOpen((value) => !value)}
+                    onClick={() => {
+                        if (open) {
+                            closeFilter();
+                            return;
+                        }
+
+                        setOpen(true);
+                    }}
                     aria-haspopup="listbox"
                     aria-expanded={open}
                     className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${selected.length > 0

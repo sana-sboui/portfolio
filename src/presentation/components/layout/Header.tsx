@@ -6,6 +6,7 @@ import type { Language } from "@/domain/models/portfolio";
 import { copy } from "@/infrastructure/content/i18n";
 import { useTheme } from "../theme/ThemeProvider";
 import { site } from "@/infrastructure/content/site";
+import Image from "next/image";
 
 interface Props {
   language: Language;
@@ -34,12 +35,13 @@ export function Header({ language, onLanguageChange }: Props) {
             className="group flex items-center gap-2.5 transition-opacity duration-200 hover:opacity-90"
             aria-label={site.name}
           >
-            <img
+            <Image
               src={theme === "light" ? "/logo-light.png" : "/logo-dark.png"}
-              alt=""
+              alt="Sana Sboui logo"
+              width={48}
+              height={48}
               className="h-12 w-12 object-contain"
             />
-
             <span
               className="
                 hidden
