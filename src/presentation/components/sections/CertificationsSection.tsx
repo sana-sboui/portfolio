@@ -7,7 +7,7 @@ import { useRef } from "react";
 import type { Language } from "@/domain/models/portfolio";
 import { certifications } from "@/infrastructure/content/portfolio";
 import { copy } from "@/infrastructure/content/i18n";
-import { SectionHeading } from "../layout/sectionheading";
+import { SectionHeading } from "../layout/SectionHeading";
 
 interface Props {
     language: Language;

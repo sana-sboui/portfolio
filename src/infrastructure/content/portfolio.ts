@@ -13,7 +13,7 @@ export const experiences: Experience[] = [
       en: "Built a full-stack platform connecting people with disabilities, ministries and associations, with accessible multilingual interfaces, secure authentication and dedicated AI services.",
       fr: "Développement d'une plateforme full-stack reliant les personnes en situation de handicap, les ministères et les associations, avec interfaces multilingues accessibles, authentification sécurisée et services IA dédiés."
     },
-    technologies: ["Next.js", "NestJS", "GraphQL", "PostgreSQL", "FastAPI", "Docker"],
+    technologies: ["Next.js", "NestJS", "GraphQL", "PostgreSQL", "FastAPI", "Docker", "GitHub Actions", "Git", "Figma"],
     highlights: {
       en: [
         "Designed a layered backend inspired by Clean Architecture and validated performance at up to 367 requests/second with 500 concurrent users.",
@@ -43,7 +43,7 @@ export const experiences: Experience[] = [
       en: "Developed quiz creation workflows, reusable Next.js components, trainer onboarding and transactional email features for an educational platform.",
       fr: "Développement de workflows de création de quiz, de composants Next.js réutilisables, du parcours Devenir formateur et de fonctionnalités d'e-mails transactionnels."
     },
-    technologies: ["Next.js", "NestJS", "GraphQL", "PostgreSQL"],
+    technologies: ["Next.js", "NestJS", "GraphQL", "PostgreSQL", "Git"],
     highlights: {
       en: [
         "Built a reusable quiz creation workflow with question reuse and Markdown support.",
@@ -71,7 +71,7 @@ export const experiences: Experience[] = [
       en: "Developed responsive Next.js interfaces from design specifications and worked with the product team to improve UI consistency and usability.",
       fr: "Développement d'interfaces responsives en Next.js à partir des spécifications de design et collaboration avec l'équipe produit sur l'ergonomie et la cohérence de l'interface."
     },
-    technologies: ["Next.js"],
+    technologies: ["Next.js", "Tailwind CSS", "Figma", "GitLab"],
     highlights: {
       en: ["Developed responsive Next.js interfaces from design specifications and worked with the product team to improve UI consistency and usability."],
       fr: ["Développement d'interfaces responsives en Next.js à partir des spécifications de design et collaboration avec l'équipe produit sur l'ergonomie et la cohérence de l'interface."]
@@ -162,6 +162,9 @@ export const projects: Project[] = [
       "Whisper",
       "RAG",
       "Docker",
+      "GitHub Actions",
+      "Git",
+      "Figma"
     ],
     featured: true,
     coverImage: "/projects/sabilouna/cover.png",
@@ -182,7 +185,7 @@ export const projects: Project[] = [
       en: "An educational platform with structured quiz creation, reusable question workflows, trainer application approval and automated transactional emails.",
       fr: "Une plateforme éducative avec un workflow structuré de création de quiz, la réutilisation des questions, l'approbation des candidatures de formateurs et l'automatisation des e-mails transactionnels.",
     },
-    technologies: ["Next.js", "NestJS", "GraphQL", "PostgreSQL", "TypeORM", "Redis"],
+    technologies: ["Next.js", "NestJS", "GraphQL", "PostgreSQL", "TypeORM", "Redis", "Git"],
     featured: true,
     coverImage: "/projects/instalab/cover.png",
     videoUrl: "/projects/instalab/demo.mp4",
@@ -199,7 +202,7 @@ export const projects: Project[] = [
       en: "A full-stack marketplace connecting freelancers and clients through project discovery, applications, role-based workflows, messaging and feedback.",
       fr: "Une marketplace full-stack reliant freelances et clients via découverte de projets, candidatures, workflows par rôles, messagerie et évaluations.",
     },
-    technologies: ["React", "NestJS", "GraphQL", "Git", "GitHub"],
+    technologies: ["React", "NestJS", "GraphQL", "Git", "MySQL"],
     featured: true,
     coverImage: "/projects/jobnest/cover.png",
     videoUrl: "/projects/jobnest/demo.mp4",
@@ -227,7 +230,7 @@ export const projects: Project[] = [
       en: "Centralized educational platform for students, teachers, groups, courses, quizzes and communication, including real-time group chat and Swagger API documentation.",
       fr: "Plateforme éducative centralisée pour les étudiants, enseignants, groupes, cours, quiz et communication, avec chat temps réel et documentation API Swagger.",
     },
-    technologies: ["Django", "Angular", "Ionic", "PostgreSQL", "Redis", "Docker", "Kubernetes"],
+    technologies: ["Django", "Angular", "Ionic", "PostgreSQL", "Redis", "Docker", "Kubernetes", "Git"],
     featured: false,
     coverImage: "/projects/edusmart/cover.png",
     videoUrl: "/projects/edusmart/demo.mp4",
@@ -241,7 +244,7 @@ export const projects: Project[] = [
       en: "A multi-module hospital management system covering patient records, appointments, pharmacy stock, real-time internal messaging, online payments with Stripe, and an integrated chatbot.",
       fr: "Un système de gestion hospitalière multi-modules couvrant les dossiers patients, les rendez-vous, le stock de la pharmacie, la messagerie interne en temps réel, les paiements en ligne avec Stripe et un chatbot intégré.",
     },
-    technologies: [".NET", "Angular", "Stripe API", "Gemini API"],
+    technologies: [".NET", "Angular", "Stripe API", "Gemini API", "Git"],
     featured: false,
     coverImage: "/projects/hms/cover.png",
     videoUrl: "/projects/hms/demo.mp4",
