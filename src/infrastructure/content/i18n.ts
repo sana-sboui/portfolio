@@ -92,7 +92,6 @@ export const copy: Record<Language, Record<string, string>> = {
     source: "Code source",
     resources: "Ressources du projet",
     viewProject: "Voir le projet",
-    videoAvailable: "Vidéo disponible",
     screenshotsAvailable: "Captures disponibles",
     closeProject: "Fermer le projet",
     previousScreenshot: "Capture précédente",
