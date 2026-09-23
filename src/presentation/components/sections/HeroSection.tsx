@@ -76,8 +76,10 @@ export function HeroSection({ language }: Props) {
                             "NestJS",
                             "Java",
                             "Spring Boot",
+                            "Angular",
                             "PostgreSQL",
                             "Docker",
+                            "CI/CD",
                         ].map((item) => (
                             <span
                                 key={item}
